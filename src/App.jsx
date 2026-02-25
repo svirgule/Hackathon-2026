@@ -71,7 +71,79 @@ function App() {
           />
         );
       })}
+      {/* --- LA BARRE DES TÂCHES --- */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '40px',
+          backgroundColor: '#c0c0c0',
+          borderTop: '2px solid #dfdfdf',
+          display: 'flex',
+          alignItems: 'center',
+          padding: '0 5px',
+          zIndex: 9999, // Toujours au premier plan
+          boxShadow: 'inset 0 1px 0 #fff'
+        }}
+      >
+        {/* Bouton Démarrer */}
+        <button
+          style={{
+            fontWeight: 'bold',
+            marginRight: '15px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '5px'
+          }}
+        >
+          <span style={{ color: 'blue' }}>A</span>
+          <span style={{ color: 'red' }}>M</span>
+          <span style={{ color: 'green' }}>U</span>
+          -OS
+        </button>
+
+        {/* Liste des applications ouvertes */}
+        <div style={{ display: 'flex', gap: '5px', flexGrow: 1 }}>
+          {openWindows.map(appId => {
+            const appData = registry.find(a => a.id === appId);
+            const isActive = activeWindowId === appId;
+            return (
+              <button
+                key={appId}
+                onClick={() => setActiveWindowId(appId)}
+                style={{
+                  width: '150px',
+                  textAlign: 'left',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  // Effet de bouton "enfoncé" si c'est la fenêtre active
+                  boxShadow: isActive ? 'inset 2px 2px 2px #000, inset -2px -2px 2px #fff' : '',
+                  backgroundColor: isActive ? '#dfdfdf' : ''
+                }}
+              >
+                {appData?.name}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Horloge */}
+        <div
+          style={{
+            padding: '2px 10px',
+            border: '2px solid',
+            borderColor: '#808080 #fff #fff #808080',
+            fontSize: '12px'
+          }}
+        >
+          {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+        </div>
+      </div>
     </div>
+
   );
 }
 
