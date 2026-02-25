@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculatrice Simple</title>
+  <!-- ✅ Chemin RELATIF obligatoire -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <div class="calculator">
+    <!-- Écran -->
+    <div class="display">
+      <div class="display-previous" id="previous"></div>
+      <div class="display-current" id="current">0</div>
+    </div>
+
+    <!-- Grille de boutons -->
+    <div class="buttons">
+      <!-- Ligne 1 -->
+      <button class="btn btn-action" data-action="clear">C</button>
+      <button class="btn btn-action" data-action="backspace">⌫</button>
+      <button class="btn btn-action" data-action="percent">%</button>
+      <button class="btn btn-operator" data-value="/">÷</button>
+
+      <!-- Ligne 2 -->
+      <button class="btn btn-number" data-value="7">7</button>
+      <button class="btn btn-number" data-value="8">8</button>
+      <button class="btn btn-number" data-value="9">9</button>
+      <button class="btn btn-operator" data-value="*">×</button>
+
+      <!-- Ligne 3 -->
+      <button class="btn btn-number" data-value="4">4</button>
+      <button class="btn btn-number" data-value="5">5</button>
+      <button class="btn btn-number" data-value="6">6</button>
+      <button class="btn btn-operator" data-value="-">−</button>
+
+      <!-- Ligne 4 -->
+      <button class="btn btn-number" data-value="1">1</button>
+      <button class="btn btn-number" data-value="2">2</button>
+      <button class="btn btn-number" data-value="3">3</button>
+      <button class="btn btn-operator" data-value="+">+</button>
+
+      <!-- Ligne 5 -->
+      <button class="btn btn-number btn-zero" data-value="0">0</button>
+      <button class="btn btn-number" data-value=".">.</button>
+      <button class="btn btn-equal" data-action="equals">=</button>
+    </div>
+  </div>
+
+  <!-- ✅ Chemin RELATIF obligatoire -->
+  <script src="./script.js"></script>
+</body>
+</html>
