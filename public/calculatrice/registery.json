@@ -1,0 +1,8 @@
+{
+  "id": "calculatrice-simple",
+  "name": "Calculatrice Simple",
+  "authors": ["TonPseudo"],
+  "dependencies": [],
+  "entry_point": "index.html",
+  "short_description": "Une calculatrice avec les 4 opérations de base, le pourcentage et le support clavier."
+}

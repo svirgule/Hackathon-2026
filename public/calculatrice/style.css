@@ -1,0 +1,169 @@
+/* ============================================
+   CALCULATRICE SIMPLE — Noeud pour OS XP
+   Conçue pour une iframe de ~400x300px
+   ============================================ */
+
+/* --- Reset & Base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e8e8e8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden; /* ✅ Pas de scroll dans l'iframe */
+}
+
+/* --- Conteneur principal --- */
+.calculator {
+  width: 100%;
+  max-width: 400px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f0;
+  border: 1px solid #999;
+}
+
+/* --- Écran d'affichage --- */
+.display {
+  background: #1a2a3a;
+  padding: 10px 15px;
+  text-align: right;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-bottom: 2px solid #666;
+}
+
+.display-previous {
+  color: #7a9bb5;
+  font-size: 14px;
+  min-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.display-current {
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* --- Grille des boutons --- */
+.buttons {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  padding: 4px;
+  background: #d0d0d0;
+}
+
+/* --- Style des boutons --- */
+.btn {
+  border: 1px solid #b0b0b0;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.1s, transform 0.05s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+.btn:hover {
+  filter: brightness(0.95);
+}
+
+.btn:active {
+  transform: scale(0.96);
+  filter: brightness(0.9);
+}
+
+/* --- Types de boutons --- */
+.btn-number {
+  background: #ffffff;
+  color: #1a1a1a;
+}
+
+.btn-operator {
+  background: #ff9f0a;
+  color: #ffffff;
+  border-color: #e08900;
+}
+
+.btn-operator:hover {
+  background: #e08900;
+}
+
+.btn-action {
+  background: #d4d4d2;
+  color: #1a1a1a;
+}
+
+.btn-action:hover {
+  background: #c0c0be;
+}
+
+.btn-equal {
+  background: #34c759;
+  color: #ffffff;
+  border-color: #2aa147;
+}
+
+.btn-equal:hover {
+  background: #2aa147;
+}
+
+/* Le bouton 0 prend 2 colonnes */
+.btn-zero {
+  grid-column: span 2;
+}
+
+/* --- Animation flash sur le résultat --- */
+.display-current.flash {
+  animation: resultFlash 0.3s ease;
+}
+
+@keyframes resultFlash {
+  0%   { color: #34c759; }
+  100% { color: #ffffff; }
+}
+
+/* --- Responsive pour très petites iframes --- */
+@media (max-height: 250px) {
+  .display {
+    min-height: 50px;
+    padding: 5px 10px;
+  }
+  .display-current {
+    font-size: 20px;
+  }
+  .btn {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 250px) {
+  .btn {
+    font-size: 14px;
+  }
+  .display-current {
+    font-size: 22px;
+  }
+}
